@@ -1,6 +1,8 @@
 package com.bdjobs.recyclerview;
 
 import android.content.Context;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -14,23 +16,22 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
-{
+public class MainActivity extends AppCompatActivity {
 
     private List<Movie> movieList = new ArrayList<>();
     private RecyclerView recyclerView;
     private MovieAdapter mAdapter;
+    CoordinatorLayout mainCoordinator;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-
-        mAdapter = new MovieAdapter(movieList,getApplicationContext());
+        mainCoordinator = (CoordinatorLayout) findViewById(R.id.mainCoordinator);
+        mAdapter = new MovieAdapter(movieList, getApplicationContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view, int position) {
 
-                Toast.makeText(MainActivity.this, "You have Clicked "+movieList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
+                Snackbar snackbar = Snackbar.make(mainCoordinator, "You Have Selected : "+movieList.get(position).getTitle(), Snackbar.LENGTH_LONG);
+                snackbar.show();
             }
 
             @Override
@@ -53,8 +55,7 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void prepareMovieData()
-    {
+    private void prepareMovieData() {
         Movie movie = new Movie("Mad Max: Fury Road", "Action & Adventure", "2015");
         movieList.add(movie);
 
