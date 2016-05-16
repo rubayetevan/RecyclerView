@@ -1,6 +1,7 @@
 package com.bdjobs.recyclerview;
 
 import android.content.Context;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -22,13 +23,15 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private MovieAdapter mAdapter;
     CoordinatorLayout mainCoordinator;
+    CollapsingToolbarLayout collapsingToolbarLayout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_layout);
+        collapsingToolbarLayout.setTitle("Movie List");
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mainCoordinator = (CoordinatorLayout) findViewById(R.id.mainCoordinator);
         mAdapter = new MovieAdapter(movieList, getApplicationContext());
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
 
-                Snackbar snackbar = Snackbar.make(mainCoordinator, "You Have Selected : "+movieList.get(position).getTitle(), Snackbar.LENGTH_LONG);
+                Snackbar snackbar = Snackbar.make(mainCoordinator, "You Have Selected : " + movieList.get(position).getTitle(), Snackbar.LENGTH_LONG);
                 snackbar.show();
             }
 
