@@ -11,7 +11,10 @@
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="3dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
         android:clickable="true"
         android:stateListAnimator="@animator/lift_on_touch"
         android:elevation="6dp"
@@ -27,6 +30,7 @@
             android:padding="2dp">
 
             <TextView
+                android:fontFamily="sans-serif-medium"
                 android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -37,6 +41,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:fontFamily="sans-serif-condensed"
                 android:id="@+id/genre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,6 +49,7 @@
                 android:paddingLeft="5dp" />
 
             <TextView
+                android:fontFamily="sans-serif-light"
                 android:id="@+id/year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
